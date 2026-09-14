@@ -1,0 +1,50 @@
+{
+  "label_replacements": {
+    "synthetic / pvc": "PVC"
+  },
+  "opaque_template_library": {
+    "WALL": {
+      "mass": {"construction": "Typical Insulated Exterior Mass Wall", "insulation_mode": "replace", "donor_insulation": "Typical Insulation"},
+      "wood": {"construction": "Typical Insulated Wood Framed Exterior Wall", "insulation_mode": "replace", "donor_insulation": "Typical Insulation"},
+      "steel": {"construction": "Typical Insulated Steel Framed Exterior Wall", "insulation_mode": "replace", "donor_insulation": "Typical Insulation"},
+      "metal": {"construction": "Typical Insulated Metal Building Wall", "insulation_mode": "replace", "donor_insulation": "Typical Insulation"}
+    },
+    "FLOOR": {
+      "mass": {"construction": "Typical Insulated 8in Slab Floor", "insulation_mode": "replace", "donor_insulation": "Typical Insulation"},
+      "wood": {"construction": "Typical Insulated 8in Slab Floor", "insulation_mode": "replace", "donor_insulation": "Typical Insulation"},
+      "steel": {"construction": "Typical Insulated 8in Slab Floor", "insulation_mode": "replace", "donor_insulation": "Typical Insulation"},
+      "metal": {"construction": "Typical Insulated 8in Slab Floor", "insulation_mode": "replace", "donor_insulation": "Typical Insulation"}
+    },
+    "ROOF": {
+      "mass": {"construction": "Typical Built Up Roof", "insulation_mode": "replace", "donor_insulation": "Typical Insulation"},
+      "steel": {"construction": "Typical IEAD Roof", "insulation_mode": "replace", "donor_insulation": "Typical Insulation"},
+      "metal": {"construction": "Typical Insulated Metal Building Roof", "insulation_mode": "replace", "donor_insulation": "Typical Insulation"},
+      "wood": {"construction": "Typical Uninsulated Wood Joist Attic Roof", "insulation_mode": "insert", "insert_after": 0, "donor_insulation": "Typical Insulation"}
+    }
+  },
+  "opaque_keyword_family": {
+    "WALL": {
+      "brick": "mass", "solid wall": "mass", "concrete": "mass", "concrete + bricks": "mass",
+      "honeycomb bricks / hollow blocks wall": "mass", "cavity wall": "mass", "other": "mass",
+      "wood": "wood", "steel": "steel", "metal": "metal"
+    },
+    "FLOOR": {
+      "concrete slab": "mass", "concrete": "mass", "concrete + bricks": "mass", "other": "mass",
+      "wood": "wood", "wooden floor (rafters + boards)": "wood"
+    },
+    "ROOF": {
+      "flat roof": "mass", "concrete": "mass", "concrete + bricks": "mass", "tilted roof": "wood",
+      "wood": "wood", "steel": "steel", "metal": "metal"
+    }
+  },
+  "window": {
+    "frame_keys": ["wood", "synthetic / pvc", "aluminium"],
+    "glazing_keys": ["single glazing", "double glazing", "triple glazing"],
+    "defaults_by_glazing": {
+      "single glazing": {"shgc": 0.85, "vt": 0.9},
+      "double glazing": {"shgc": 0.7, "vt": 0.8},
+      "triple glazing": {"shgc": 0.6, "vt": 0.7}
+    },
+    "fallback": {"shgc": 0.7, "vt": 0.7}
+  }
+}

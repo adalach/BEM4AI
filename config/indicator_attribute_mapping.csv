@@ -1,0 +1,34 @@
+Requested indicator,Thematic Area,Group,Attribute ID,Unit,Table
+Country name,General Characteristics,Country Name,GC_CNT_GAD_2025,-,GENERAL_CHARACTERISTICS
+Urban Centre Main Name,General Characteristics,Urban Centre Name,GC_UCN_MAI_2025,-,GENERAL_CHARACTERISTICS
+Urban Centre List of Names,General Characteristics,Urban Centre Name,GC_UCN_LIS_2025,-,GENERAL_CHARACTERISTICS
+Urban Centre Area,General Characteristics,Urban Centre Area,GC_UCA_KM2_2025,km2,GENERAL_CHARACTERISTICS
+Urban Centre population,General Characteristics,Urban centre population,GC_POP_TOT_2025,number of people,GENERAL_CHARACTERISTICS
+Population weighted Centroid Longitude,General Characteristics,Urban centre centroid,GC_UCC_LON_2025,,GENERAL_CHARACTERISTICS
+Population weighted Centroid Latitude,General Characteristics,Urban centre centroid,GC_UCC_LAT_2025,,GENERAL_CHARACTERISTICS
+Num of people living in residential prevalent 3-7 floors built-up,GHSL,Built-up Type,GH_BUT_P12_2020,num inhabitants,GHSL
+Num of people living in residential prevalent > 8 floors built-up,GHSL,Built-up Type,GH_BUT_P13_2020,num inhabitants,GHSL
+Share of 2025 BU surface in temporal dominant prec-1975,GHSL,Buillt-up Age (Temporal Domain),GH_AGE_S75_2025,%,GHSL
+Share of  2025 BU surface in temporal dominant 1975-1985,GHSL,Buillt-up Age (Temporal Domain),GH_AGE_S85_2025,%,GHSL
+Share of 2025 BU surface in temporal dominant 1985-1995,GHSL,Buillt-up Age (Temporal Domain),GH_AGE_S95_2025,%,GHSL
+Share of 2025  BU surface in temporal dominant 1995-2005,GHSL,Buillt-up Age (Temporal Domain),GH_AGE_S05_2025,%,GHSL
+Share of 2025  BU surface in temporal dominant 2005-2015,GHSL,Buillt-up Age (Temporal Domain),GH_AGE_S15_2025,%,GHSL
+Share of 2025  BU surface in temporal dominant 2015-2025,GHSL,Buillt-up Age (Temporal Domain),GH_AGE_S25_2025,%,GHSL
+Average Elevation,Geography,Elevation ,GE_ELV_AVG_2025,m,GEOGRAPHY
+Average GDP,Socio-economic,GDP,SC_GDP_AVG_2020,PPP,SOCIOECONOMIC
+Human Development Index,Socio-economic,Human Development Index,SC_SEC_HDI_2020,-,SOCIOECONOMIC
+Share of young population (0-14 years),Socio-economic,Population distribution,SC_SEC_PCY_2020,%,SOCIOECONOMIC
+Share of adult population (15-64 years),Socio-economic,Population distribution,SC_SEC_PCA_2020,%,SOCIOECONOMIC
+Share of old population (> 65 years),Socio-economic,Population distribution,SC_SEC_PCO_2020,%,SOCIOECONOMIC
+Total emission of CO2 from the residential sector,Emissions,Total emissions per substance and sector,GR_SQM_HGR_2022,m2,GREENNESS
+Total emission of GHG from the residential sector,Emissions,Total emissions per substance and sector,GR_SQM_HGR_2022,m2,GREENNESS
+Total emission of NOx from the residential sector,Emissions,Total emissions per substance and sector,GR_SQM_HGR_2022,m2,GREENNESS
+Total emission of PM2.5 from the residential sector,Emissions,Total emissions per substance and sector,GR_SQM_HGR_2022,m2,GREENNESS
+Share of  high green area in built-up area,Greenness,Greenness in the built-up,GR_SHB_HGR_2020,%,GREENNESS
+Share of green area in built-up area,Greenness,Greenness in the built-up,GR_SHB_GRN_2020,%,GREENNESS
+Koppen Geiger classification of the majority of UC surface - current conditions,Climate,Climate Classification,CL_KOP_CUR_2025,-,CLIMATE
+Average daily PV potential,Climate,Renewable potential,CL_REN_PVO_2020,kWh/kWp ,CLIMATE
+Mean wind speed at 10 m above ground,Climate,Renewable potential,CL_REN_W01_2020,m/s,CLIMATE
+Mean wind speed at 50 m above ground,Climate,Renewable potential,CL_REN_W05_2020,m/s,CLIMATE
+Percentage of days with maximum temperature above the corresponding calendar day 90th percentile of maximum temperature for a 5-day moving window in the base period 1961-1990 - reanalysis data,Climate,Warm Days,CL_WDS_CUR_2010,%,CLIMATE
+Number of days that Universal thermal climate index has exceeded 32 degrees,Climate,Universal thermal climate ,CL_UTC_T32_2020,Num. of days,CLIMATE

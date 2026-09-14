@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Building Selector</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <header class="shell shell--top">
+    <div class="topbar">
+      <div class="shell__intro">
+        <h1>Building Selector</h1>
+        <p class="shortcuts">
+          <kbd>-&gt;</kbd> next
+          <kbd>&lt;-</kbd> previous
+          <kbd>enter</kbd> confirm
+        </p>
+      </div>
+      <div class="toolbar__stats">
+        <button id="partition-toggle" class="toolbar-button" type="button" aria-pressed="true">
+          Hide Partitions
+        </button>
+        <div class="stat">
+          <span class="stat__label">Page</span>
+          <strong id="page-indicator">1 / 1</strong>
+        </div>
+        <div class="stat">
+          <span class="stat__label">Range</span>
+          <strong id="range-indicator">0-0</strong>
+        </div>
+        <div class="stat">
+          <span class="stat__label">Selected</span>
+          <strong id="selected-indicator">0</strong>
+        </div>
+        <div class="stat">
+          <span class="stat__label">Saved</span>
+          <strong id="saved-indicator">0</strong>
+        </div>
+      </div>
+    </div>
+    <div class="status-line">
+      <span id="message" class="message"></span>
+      <span id="csv-path" class="csv-path"></span>
+    </div>
+  </header>
+
+  <main id="grid-shell" class="shell shell--grid">
+    <section id="grid" class="grid" aria-live="polite"></section>
+  </main>
+
+  <div class="progress-rail" aria-hidden="true">
+    <div id="progress-fill" class="progress-fill"></div>
+  </div>
+
+  <script src="/app.js" defer></script>
+</body>
+</html>

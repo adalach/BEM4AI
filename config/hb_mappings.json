@@ -1,0 +1,355 @@
+{
+  "ghsl_builtage": {
+    "0": {
+      "epoch": "not built-up",
+      "typical_year": null,
+      "age_class_label": null,
+      "hb_vintage_file": null
+    },
+    "1": {
+      "epoch": "< 1975",
+      "typical_year": 1960,
+      "age_class_label": "1945 - 1969",
+      "hb_vintage_file": "pre_1980_data.json"
+    },
+    "2": {
+      "epoch": "1975 - 1980",
+      "typical_year": 1977,
+      "age_class_label": "1970 - 1979",
+      "hb_vintage_file": "pre_1980_data.json"
+    },
+    "3": {
+      "epoch": "1980 - 1985",
+      "typical_year": 1982,
+      "age_class_label": "1980 - 1989",
+      "hb_vintage_file": "1980_2004_data.json"
+    },
+    "4": {
+      "epoch": "1985 - 1990",
+      "typical_year": 1987,
+      "age_class_label": "1980 - 1989",
+      "hb_vintage_file": "1980_2004_data.json"
+    },
+    "5": {
+      "epoch": "1990 - 1995",
+      "typical_year": 1992,
+      "age_class_label": "1990 - 1999",
+      "hb_vintage_file": "1980_2004_data.json"
+    },
+    "6": {
+      "epoch": "1995 - 2000",
+      "typical_year": 1997,
+      "age_class_label": "1990 - 1999",
+      "hb_vintage_file": "1980_2004_data.json"
+    },
+    "7": {
+      "epoch": "2000 - 2005",
+      "typical_year": 2002,
+      "age_class_label": "2000 - 2010",
+      "hb_vintage_file": "1980_2004_data.json"
+    },
+    "8": {
+      "epoch": "2005 - 2010",
+      "typical_year": 2007,
+      "age_class_label": "2000 - 2010",
+      "hb_vintage_file": "2007_data.json"
+    },
+    "9": {
+      "epoch": "2010 - 2015",
+      "typical_year": 2012,
+      "age_class_label": "Post 2010",
+      "hb_vintage_file": "2010_data.json"
+    },
+    "10": {
+      "epoch": "2015 - 2020",
+      "typical_year": 2017,
+      "age_class_label": "Post 2010",
+      "hb_vintage_file": "2016_data.json"
+    }
+  },
+  "kg_numeric_to_code": {
+    "1": "Af",
+    "2": "Am",
+    "3": "Aw",
+    "4": "BWh",
+    "5": "BWk",
+    "6": "BSh",
+    "7": "BSk",
+    "8": "Csa",
+    "9": "Csb",
+    "10": "Csc",
+    "11": "Cwa",
+    "12": "Cwb",
+    "13": "Cwc",
+    "14": "Cfa",
+    "15": "Cfb",
+    "16": "Cfc",
+    "17": "Dsa",
+    "18": "Dsb",
+    "19": "Dsc",
+    "20": "Dsd",
+    "21": "Dwa",
+    "22": "Dwb",
+    "23": "Dwc",
+    "24": "Dwd",
+    "25": "Dfa",
+    "26": "Dfb",
+    "27": "Dfc",
+    "28": "Dfd",
+    "29": "ET",
+    "30": "EF"
+  },
+  "kg_to_ashrae": {
+    "Af": {
+      "zone": "1A",
+      "desc": "Very Hot - Humid"
+    },
+    "Am": {
+      "zone": "1A",
+      "desc": "Very Hot - Humid"
+    },
+    "Aw": {
+      "zone": "1A",
+      "desc": "Very Hot - Humid"
+    },
+    "BWh": {
+      "zone": "2B",
+      "desc": "Hot - Dry"
+    },
+    "BSh": {
+      "zone": "2B",
+      "desc": "Hot - Dry"
+    },
+    "BWk": {
+      "zone": "5B",
+      "desc": "Cool - Dry"
+    },
+    "BSk": {
+      "zone": "5B",
+      "desc": "Cool - Dry"
+    },
+    "Csa": {
+      "zone": "3C",
+      "desc": "Warm - Marine"
+    },
+    "Csb": {
+      "zone": "3C",
+      "desc": "Warm - Marine"
+    },
+    "Csc": {
+      "zone": "3C",
+      "desc": "Warm - Marine"
+    },
+    "Cfa": {
+      "zone": "3A",
+      "desc": "Warm - Humid"
+    },
+    "Cwa": {
+      "zone": "3A",
+      "desc": "Warm - Humid"
+    },
+    "Cfb": {
+      "zone": "4C",
+      "desc": "Mixed - Marine"
+    },
+    "Cfc": {
+      "zone": "4C",
+      "desc": "Mixed - Marine"
+    },
+    "Cwb": {
+      "zone": "4C",
+      "desc": "Mixed - Marine"
+    },
+    "Cwc": {
+      "zone": "4C",
+      "desc": "Mixed - Marine"
+    },
+    "Dfa": {
+      "zone": "5A",
+      "desc": "Cool - Humid"
+    },
+    "Dfb": {
+      "zone": "5A",
+      "desc": "Cool - Humid"
+    },
+    "Dwa": {
+      "zone": "5A",
+      "desc": "Cool - Humid"
+    },
+    "Dwb": {
+      "zone": "5A",
+      "desc": "Cool - Humid"
+    },
+    "Dsa": {
+      "zone": "5A",
+      "desc": "Cool - Humid"
+    },
+    "Dsb": {
+      "zone": "5A",
+      "desc": "Cool - Humid"
+    },
+    "Dsc": {
+      "zone": "7",
+      "desc": "Very Cold"
+    },
+    "Dsd": {
+      "zone": "7",
+      "desc": "Very Cold"
+    },
+    "Dfc": {
+      "zone": "7",
+      "desc": "Very Cold"
+    },
+    "Dfd": {
+      "zone": "7",
+      "desc": "Very Cold"
+    },
+    "Dwc": {
+      "zone": "7",
+      "desc": "Very Cold"
+    },
+    "Dwd": {
+      "zone": "7",
+      "desc": "Very Cold"
+    },
+    "ET": {
+      "zone": null,
+      "desc": "Not Classified by ASHRAE"
+    },
+    "EF": {
+      "zone": null,
+      "desc": "Not Classified by ASHRAE"
+    }
+  },
+  "floor_height_bounds": {
+    "default": {
+      "min": 2.6,
+      "max": 3.4,
+      "mid": 3.0
+    }
+  },
+  "hb_program_mapping": {
+    "default": {
+      "archetype": "MidriseApartment",
+      "space_type": "Apartment"
+    },
+    "1": {
+      "code": "SF_TERRACED",
+      "space_type": "Apartment"
+    },
+    "2": {
+      "code": "MULTIFAMILY",
+      "space_type": "Apartment"
+    },
+    "3": {
+      "code": "APARTMENT_BLOCK",
+      "space_type": "Apartment"
+    },
+    "4": {
+      "code": "OFFICES",
+      "archetype": "LargeOffice",
+      "space_type": "OpenOffice"
+    },
+    "5": {
+      "code": "TRADE",
+      "archetype": "Retail",
+      "space_type": "Retail"
+    },
+    "6": {
+      "code": "EDUCATION",
+      "archetype": "SecondarySchool",
+      "space_type": "Classroom"
+    },
+    "7": {
+      "code": "HEALTH",
+      "archetype": "Hospital",
+      "space_type": "PatRoom"
+    },
+    "8": {
+      "code": "HOTELS_RESTAURANTS",
+      "archetype": "LargeHotel",
+      "space_type": "GuestRoom"
+    }
+  },
+  "hb_program_classification": {
+    "highrise_floor_threshold": 9
+  },
+  "window_characteristics": {
+    "defaults": {
+      "residential_fallback_bt_id": 3,
+      "service_fallback_bt_id": 4
+    },
+    "1": {
+      "code": "SF_TERRACED",
+      "label": "Single family – Terraced houses",
+      "sector": "Residential",
+      "aperture_height": 1.2,
+      "sill_height": 0.9,
+      "horizontal_separation": 1.5,
+      "ratio": 0.25
+    },
+    "2": {
+      "code": "MULTIFAMILY",
+      "label": "Multifamily houses",
+      "sector": "Residential",
+      "aperture_height": 1.3,
+      "sill_height": 1.0,
+      "horizontal_separation": 1.6,
+      "ratio": 0.3
+    },
+    "3": {
+      "code": "APARTMENT_BLOCK",
+      "label": "Apartment blocks",
+      "sector": "Residential",
+      "aperture_height": 1.4,
+      "sill_height": 1.0,
+      "horizontal_separation": 1.8,
+      "ratio": 0.3
+    },
+    "4": {
+      "code": "OFFICES",
+      "label": "Offices",
+      "sector": "Service",
+      "aperture_height": 1.6,
+      "sill_height": 0.9,
+      "horizontal_separation": 2.0,
+      "ratio": 0.45
+    },
+    "5": {
+      "code": "TRADE",
+      "label": "Trade",
+      "sector": "Service",
+      "aperture_height": 2.2,
+      "sill_height": 0.5,
+      "horizontal_separation": 1.8,
+      "ratio": 0.5
+    },
+    "6": {
+      "code": "EDUCATION",
+      "label": "Education",
+      "sector": "Service",
+      "aperture_height": 1.5,
+      "sill_height": 1.0,
+      "horizontal_separation": 2.0,
+      "ratio": 0.4
+    },
+    "7": {
+      "code": "HEALTH",
+      "label": "Health",
+      "sector": "Service",
+      "aperture_height": 1.3,
+      "sill_height": 1.2,
+      "horizontal_separation": 2.5,
+      "ratio": 0.3
+    },
+    "8": {
+      "code": "HOTELS_RESTAURANTS",
+      "label": "Hotels and Restaurants",
+      "sector": "Service",
+      "aperture_height": 1.5,
+      "sill_height": 1.0,
+      "horizontal_separation": 1.7,
+      "ratio": 0.45
+    }
+  }
+}

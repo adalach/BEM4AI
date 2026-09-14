@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BEM Selector</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <header class="shell shell--top">
+    <div class="topbar">
+      <div class="shell__intro">
+        <h1>BEM Model Selector</h1>
+        <p class="shortcuts">
+          <span>Purple = BEM shades, gray = original neighborhood context.</span>
+          <kbd>→</kbd> next
+          <kbd>←</kbd> previous
+          <kbd>A</kbd>/<kbd>D</kbd> page
+          <kbd>enter</kbd> save
+        </p>
+      </div>
+      <div class="toolbar__stats">
+        <div class="stat">
+          <span class="stat__label">Page</span>
+          <strong id="page-indicator">1 / 1</strong>
+        </div>
+        <div class="stat stat--jump">
+          <span class="stat__label">Jump</span>
+          <form id="page-jump-form" class="page-jump" autocomplete="off">
+            <input id="page-jump-input" class="page-jump__input" type="number" min="1" step="1" inputmode="numeric" aria-label="Jump to page">
+          </form>
+        </div>
+        <div class="stat">
+          <span class="stat__label">Range</span>
+          <strong id="range-indicator">0-0</strong>
+        </div>
+        <div class="stat">
+          <span class="stat__label">Selected</span>
+          <strong id="selected-indicator">0</strong>
+        </div>
+        <div class="stat">
+          <span class="stat__label">Saved</span>
+          <strong id="saved-indicator">0</strong>
+        </div>
+      </div>
+      <div class="toolbar__actions">
+        <button id="context-toggle" type="button" class="toolbar-button">Hide Context</button>
+      </div>
+    </div>
+    <div class="status-line">
+      <span id="message" class="message"></span>
+      <span id="csv-path" class="csv-path"></span>
+    </div>
+  </header>
+
+  <main id="grid-shell" class="shell shell--grid">
+    <section id="grid" class="grid" aria-live="polite"></section>
+  </main>
+
+  <div class="progress-rail" aria-hidden="true">
+    <div id="progress-fill" class="progress-fill"></div>
+  </div>
+
+  <script src="/vendor/plotly.min.js"></script>
+  <script src="/app.js" defer></script>
+</body>
+</html>

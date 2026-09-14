@@ -1,0 +1,31 @@
+# Notebook runtime and general analysis
+ipykernel>=6.29
+jupyterlab>=4.2
+matplotlib>=3.8
+networkx>=3.2
+numpy>=1.26
+openpyxl>=3.1
+pandas>=2.2
+Pillow>=10.0
+plotly>=5.20
+pyvista>=0.43
+requests>=2.31
+scikit-learn>=1.3
+seaborn>=0.13
+tqdm>=4.66
+
+# Geospatial data processing
+fiona>=1.9
+geopandas>=0.14
+pyogrio>=0.9
+pyproj>=3.6
+pyrosm>=0.6
+rasterio>=1.3
+shapely>=2.0
+
+# Building-energy modelling and simulation interfaces
+honeybee-core>=1.60
+honeybee-energy[openstudio]==1.123.0
+honeybee-energy-standards==2.3.4
+ladybug-core>=0.44
+ladybug-geometry>=1.34

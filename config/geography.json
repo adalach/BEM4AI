@@ -1,0 +1,44 @@
+{
+  "aggregate_countries": [
+    "EU27+UK"
+  ],
+  "country_synonyms": {
+    "Czechia": "Czech Republic",
+    "Bosnia & Herzegovina": "Bosnia and Herzegovina",
+    "UK": "United Kingdom",
+    "Russia": "Russian Federation"
+  },
+  "geofabrik": {
+    "base_url": "https://download.geofabrik.de",
+    "region": "europe",
+    "country_slugs": {
+      "Austria": ["austria"],
+      "Belgium": ["belgium"],
+      "Bulgaria": ["bulgaria"],
+      "Croatia": ["croatia"],
+      "Czechia": ["czech-republic"],
+      "Denmark": ["denmark"],
+      "Estonia": ["estonia"],
+      "Finland": ["finland"],
+      "France": ["france"],
+      "Germany": ["germany"],
+      "Greece": ["greece"],
+      "Hungary": ["hungary"],
+      "Ireland": ["ireland-and-northern-ireland", "ireland"],
+      "Italy": ["italy"],
+      "Latvia": ["latvia"],
+      "Lithuania": ["lithuania"],
+      "Luxembourg": ["luxembourg"],
+      "Malta": ["malta"],
+      "Netherlands": ["netherlands"],
+      "Poland": ["poland"],
+      "Portugal": ["portugal"],
+      "Romania": ["romania"],
+      "Slovakia": ["slovakia"],
+      "Slovenia": ["slovenia"],
+      "Spain": ["spain"],
+      "Sweden": ["sweden"],
+      "United Kingdom": ["great-britain", "united-kingdom"]
+    }
+  }
+}
