@@ -4,6 +4,10 @@ Every notebook starts with a single line::
 
     from helpers.paths import PROJECT_ROOT, DATA_DIR, INTERIM_DIR
 
+`data/` holds three folders: `raw/` for the downloaded source data, `city-assets/`
+for the per-city extracts and chips cut from it, and `interim/` for the tables
+the notebooks hand to each other.
+
 It also provides :func:`display_path`, which every notebook should use when it
 prints a path, so that printed output is identical on every machine.
 
@@ -28,6 +32,8 @@ PROJECT_ROOT = Path(__file__).resolve().parents[2]
 NOTEBOOKS_DIR = PROJECT_ROOT / "notebooks"
 SCRIPTS_DIR = PROJECT_ROOT / "scripts"
 DATA_DIR = PROJECT_ROOT / "data"
+RAW_DIR = DATA_DIR / "raw"
+CITY_ASSETS_DIR = DATA_DIR / "city-assets"
 INTERIM_DIR = DATA_DIR / "interim"
 
 # Created on import, so that a notebook's first write does not have to check.
@@ -61,6 +67,8 @@ __all__ = [
     "NOTEBOOKS_DIR",
     "SCRIPTS_DIR",
     "DATA_DIR",
+    "RAW_DIR",
+    "CITY_ASSETS_DIR",
     "INTERIM_DIR",
     "display_path",
 ]
