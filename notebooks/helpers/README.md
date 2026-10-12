@@ -12,8 +12,9 @@ Rows are ordered by the first notebook stage that imports each module.
 | Module | Called by | Responsibility |
 | --- | --- | --- |
 | `config.py` | Stages 1-3 | Loads JSON configuration files and reports missing or malformed configuration clearly. |
-| `ghsl_chips.py` | Stage 1 | Clips the global GHSL rasters to city extents, validates cached chips, and draws chip previews. |
-| `paths.py` | Stages 1-8 | Defines repository, data, interim, notebook, and script paths independently of the current working directory. It also makes both `helpers` and `scripts` importable from notebooks. |
+| `ghsl_chips.py` | Stage 1 | Clips raster layers (GHSL tiles and global rasters, Copernicus BBH files) to the city windows on their source grids, crops them to the OSM window, validates cached chips, lists the Built-C tiles to download, and draws chips north-up without resampling. |
+| `clms_bbh.py` | Stage 1 | Lists the Copernicus BBH 2021 files under the city windows from the public CDSE catalogue (manifest), computes each window's coverage, and downloads missing files with a CDSE account. |
+| `paths.py` | Stages 1-8 | Defines repository, data (`raw`, `city-assets`, `interim`), notebook, and script paths independently of the current working directory. It also makes both `helpers` and `scripts` importable from notebooks. |
 | `utils.py` | Stages 1-6 | Provides shared naming, validation, tabular, coordinate, and geometry operations used across several stages. |
 | `hb_constructions.py` | Stages 2 and 5 | Generates Honeybee material and construction JSON from the building-stock data, then reconstructs custom construction sets for each Stage 5 model. |
 | `building_sampling.py` | Stage 3 | Allocates samples by population, loads and filters OSM footprints, samples GHSL rasters, assigns `sample_id`, and collects neighbors. |

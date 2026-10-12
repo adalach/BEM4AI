@@ -5,6 +5,14 @@ building-energy models. The accompanying HBJSON models, EnergyPlus results,
 and tabular artifacts are distributed separately through the dataset
 repository.
 
+This branch, `stage1-city-assets`, updates Stage 1: the city table, the
+per-city OSM extracts and the raster chips. Every city window is centred on the
+population-weighted centroid of its GHSL urban centre, raster chips are cut on
+their source pixel grids and cropped to the OSM window, Copernicus building
+heights at 10 m are added, and the OSM extracts keep buildings mapped as
+multipolygons whole. The code that produced the published BEM4AI dataset is on
+`main`, tagged `v1.0`.
+
 ## Contents
 
 - `notebooks/`: the primary workflow, from source data and building-stock
@@ -19,6 +27,11 @@ repository.
   configuration files.
 - `scripts/`: executable utilities, local review frontends, and the documented
   ConvexDecomp and Honeybee-preview components used by the notebooks.
+- `data/`: filled by the notebooks. `raw/` holds the downloaded source data,
+  `city-assets/` the per-city OSM extracts and raster chips cut from it, and
+  `interim/` the tables the stages pass on. Of these, only the Copernicus
+  building-height chips, their source manifest and the uncropped example chips
+  are part of the repository.
 - `LICENSE`: the CC BY 4.0 licence covering the original repository content.
 
 ## Convex decomposition
@@ -61,7 +74,7 @@ flowchart TB
     classDef nb  fill:#cfe0f0,stroke:#1d4ed8,color:#0b2560
     classDef art fill:#fdf0d5,stroke:#b45309,color:#452a02
 
-    EXT_GHSL["GHSL UCDB<br/>+ global rasters"]:::ext
+    EXT_GHSL["GHSL UCDB, rasters<br/>+ Built-C tiles<br/>+ Copernicus BBH"]:::ext
     EXT_PBF["Geofabrik<br/>country PBFs"]:::ext
     EXT_HOT["Hotmaps<br/>building_stock.csv"]:::ext
     EXT_WX["climate.onebuilding.org"]:::ext
@@ -71,7 +84,7 @@ flowchart TB
         N1["1 Cities"]:::nb
         A_CIT["cities_df.pkl"]:::art
         A_AST["city_assets_df.pkl"]:::art
-        A_CHIP["cities_osm_pbf/*.osm.pbf<br/>GHS_Built*_cities/*.tif"]:::art
+        A_CHIP["city-assets/OSM_PBF/*.osm.pbf<br/>city-assets/*/*.tif"]:::art
         N1 --> A_CIT
         N1 --> A_AST
         N1 --> A_CHIP
@@ -164,7 +177,7 @@ flowchart TB
 
 | Notebook | Reads | Writes |
 |---|---|---|
-| `BEM4AI_1_Cities` | GHSL UCDB workbook and GeoPackage, GHSL global rasters, per-country Geofabrik PBFs, `building_stock.csv` (country list only), `config/indicator_attribute_mapping.csv`, `config/geography.json` | `cities_df.pkl`, `city_assets_df.pkl`, per-city OSM extracts and GHSL chips |
+| `BEM4AI_1_Cities` | GHSL UCDB workbook and GeoPackage, GHSL Built-H and AGE global rasters, the Built-C tiles under the city windows, the Copernicus BBH 2021 files under the city windows (optional; needed only for chips not shipped with the repository), per-country Geofabrik PBFs, `building_stock.csv` (country list only), `config/indicator_attribute_mapping.csv`, `config/geography.json` | `cities_df.pkl`, `city_assets_df.pkl`, per-city OSM extracts and raster chips in `data/city-assets/` |
 | `BEM4AI_2_Archetypes` | `building_stock.csv`, `city_assets_df.pkl`, `config/geography.json`, `config/building_types.json`, `config/hb_material_rules.json` | `archetypes.pkl` |
 | `BEM4AI_3_Buildings` | `cities_df.pkl`, `city_assets_df.pkl`, per-city OSM extracts and GHSL chips, `config/building_types.json` | `buildings_gdf.pkl`, `neighbors_gdf.pkl`, `sample_id_map_buildings.csv`, footprint-review record |
 | `BEM4AI_4_ModelTransformations` | `buildings_gdf.pkl`, `neighbors_gdf.pkl`, `city_assets_df.pkl` | `buildings_transformed.pkl`, `selected_bad_building_samples.csv` |
@@ -194,7 +207,7 @@ inspection and is not read back by any notebook.
 | File | Written by | Read by | Contents |
 |---|---|---|---|
 | `cities_df.pkl` | 1 | 3, 5 | One row per city: the GHSL UCDB indicators, filtered to the study area and to countries that have building-stock data. |
-| `city_assets_df.pkl` | 1 | 2, 3, 4, 6 | One row per city: `city_key`, centroid, and the filenames of that city's OSM extract and GHSL chips. |
+| `city_assets_df.pkl` | 1 | 2, 3, 4, 6 | One row per city: `city_key`, the city centre (`lat`, `lon`: the UCDB population-weighted centroid), and the filenames of that city's OSM extract and raster chips. |
 | `archetypes.pkl` | 2 | 5 | Dict payload containing `countries`, `building_types`, `age_classes`, `elements`, `cities`, and `materials`. The material rows include source composition and U-values plus generated Honeybee material and construction JSON. |
 | `buildings_gdf.pkl` | 3 | 4, 6 | The sampled building footprints, one row per `sample_id`. |
 | `neighbors_gdf.pkl` | 3 | 4 | Surrounding footprints for each sampled building, keyed by the same `sample_id`. |
@@ -208,7 +221,7 @@ inspection and is not read back by any notebook.
 
 | Inspection output | Written by | Purpose |
 |---|---|---|
-| `extracted_attributes.csv`, `extracted_attributes_filtered_*.csv` | 1 | The GHSL attribute table before and after the geographic filter. |
+| `extracted_attributes.csv` | 1 | `cities_df.pkl` as CSV: the UCDB indicators and the centre of every city in the dataset. |
 | `pbf_building_status.csv` | 1 | Cache recording which per-city OSM extracts contain buildings. Delete it to force a full re-check. |
 | `sample_id_map_buildings.csv` | 3 | Maps each final `sample_id` to the OSM `building_id` it came from. |
 | `selected_bad_footprint_samples.csv` | 3 | `sample_id` values rejected in the sampled-footprint review. |
@@ -303,13 +316,17 @@ different standards-library version in Stage 5 could change the template layers
 underneath an insulation value solved by Stage 2, and the resulting U-value
 drift would not raise an error.
 
-## Generated outputs outside `data/interim/`
+## Data and output folders outside `data/interim/`
 
 | Directory | Written by | Contents |
 |---|---|---|
-| `data/OSM PBF/country_pbf/` | downloaded manually | Per-country Geofabrik extracts, renamed by Stage 1 to `{country_key}.osm.pbf`. |
-| `data/OSM PBF/cities_osm_pbf/` | 1 | The 2x2 km OSM extract for each city. |
-| `data/GHS_BuiltC_cities/`, `data/GHS_BuiltH_cities/`, `data/GHS_BuiltAge_cities/` | 1 | Per-city GHSL raster chips. |
+| `data/raw/GHSL/` | downloaded manually | The GHSL Urban Centre Database and the Built-H and AGE global rasters, and in `GHS_BUILTC/` the Built-C 1000 km tiles, each zip extracted anywhere inside. Stage 1 lists the tiles the city windows need, with download links, and stops while one is missing. |
+| `data/raw/OSM_PBF/` | downloaded manually | Per-country Geofabrik extracts, renamed by Stage 1 to `{country_key}.osm.pbf`. The United Kingdom is the `united-kingdom` extract, which includes Northern Ireland. |
+| `data/raw/building_stock/`, `data/raw/climate_onebuilding/` | downloaded manually | The Hotmaps building stock table (Stages 1 and 2) and the Climate.OneBuilding station list (Stage 6). |
+| `data/raw/CLMS/UA_BBH_2021/` | Stage 1 and `scripts/download_clms_bbh2021.py` | `manifest.json` (in the repository), which lists the Copernicus Urban Atlas Building Block Height 2021 files under the city windows from the public CDSE catalogue, and the files themselves in `files/` (10 m, EPSG:3035). Downloading them needs a free Copernicus Data Space account. |
+| `data/city-assets/OSM_PBF/` | 1 | The 2x2 km OSM extract for each city. |
+| `data/city-assets/GHS_BuiltC/`, `GHS_BuiltH/`, `GHS_BuiltAge/`, `UA_BBH_2021/` | 1 | Per-city raster chips (GHSL, and Copernicus BBH where covered), each on its layer's source pixel grid, cropped to the OSM window and tagged with its grid version and window (`BEM4AI_CHIP_GRID`, `BEM4AI_WINDOW`); a chip without the current ones is rebuilt. The Copernicus chips are in the repository, with their attribution in `UA_BBH_2021/README.md`. |
+| `data/city-assets/uncropped_examples/` | 1 | Uncropped chips of the four cities in the Stage 1 alignment check (in the repository). |
 | `output/hbjsons/` | 5 | Exported Honeybee models, one file per `sample_id`. |
 | `output/idf/`, `output/epjson/` | 7 | Final EnergyPlus model representations generated after weather assignment. |
 | `output/rejected_bem_models/` | 5 | Model files moved out of the active set by the generated-BEM review. |
@@ -409,8 +426,11 @@ The following external programs must be installed separately:
 
 ## Required source data
 
-The notebooks do not redistribute their source data. Stage 1 and Stage 2 list
-the required downloads and their expected locations under `data/`, and fail with
+The repository does not redistribute the source data, with one exception: the
+Copernicus building-height chips of the city windows and the uncropped example
+chips of the Stage 1 alignment check, in `data/city-assets/`, because the
+Copernicus download needs an account. Stage 1 and Stage 2 list
+the required downloads and their expected locations under `data/raw/`, and fail with
 an explicit message naming the missing file. The two entry points are the GHSL
 Urban Centre Database for the city layer and the Hotmaps building stock table
 for the archetype layer. The lightweight UCDB attribute selection shipped with
@@ -423,6 +443,7 @@ Check the linked provider terms when downloading them:
 |---|---|
 | [GHSL datasets](https://human-settlement.emergency.copernicus.eu/GHSLWeGenerateData.php#UseConditionsAndHowToCite) | CC BY 4.0. Cite the specific products and GHSL reference publication, and identify transformations. |
 | [OpenStreetMap data](https://www.openstreetmap.org/copyright), downloaded as Geofabrik extracts | ODbL 1.0. Attribution is required, and public derivative databases remain subject to the ODbL share-alike provisions. |
+| [Copernicus Land Monitoring Service](https://land.copernicus.eu/en/data-policy), Urban Atlas Building Block Height 2021 | Copernicus data policy: full, open and free access. Name the source ("European Union's Copernicus Land Monitoring Service information", DOI 10.2909/c5215520-98e9-4035-be56-d28156cd4dcd), state modifications such as clipping to the city windows, and do not imply EU endorsement. The chips in the repository carry both in their GeoTIFF tags and in `data/city-assets/UA_BBH_2021/README.md`. |
 | [Hotmaps building stock](https://gitlab.com/hotmaps/building-stock) | CC BY 4.0 with attribution. |
 | [Climate.OneBuilding](https://climate.onebuilding.org/) weather files | All Rights Reserved. The files are not redistributed by BEM4AI; each user downloads them from the provider. |
 

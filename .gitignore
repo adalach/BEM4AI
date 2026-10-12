@@ -11,8 +11,21 @@ venv/
 .idea/
 .vscode/
 
-# Downloaded source data and generated pipeline artifacts
-/data/
+# Downloaded source data and generated pipeline artifacts. Only the Copernicus
+# building-height chips, their source manifest and the uncropped example chips
+# are part of the repository.
+/data/*
+!/data/city-assets/
+/data/city-assets/*
+!/data/city-assets/UA_BBH_2021/
+!/data/city-assets/uncropped_examples/
+!/data/raw/
+/data/raw/*
+!/data/raw/CLMS/
+/data/raw/CLMS/*
+!/data/raw/CLMS/UA_BBH_2021/
+/data/raw/CLMS/UA_BBH_2021/*
+!/data/raw/CLMS/UA_BBH_2021/manifest.json
 /output/
 /working/
 /dist/

@@ -9,6 +9,7 @@ stage-specific operations remain in `notebooks/helpers/`.
 
 | File | Called from | Role |
 | --- | --- | --- |
+| `download_clms_bbh2021.py` | Stage 1 (run in a terminal) | Downloads the Copernicus BBH 2021 files listed in `data/raw/CLMS/UA_BBH_2021/manifest.json` from the Copernicus Data Space Ecosystem, with the CDSE login in `~/.config/cdse/credentials.json`; skips files already on disk. |
 | `review_apps/serve_footprint_selector.py` | Stage 3 | Serves the sampled-footprint review and records rejected `sample_id` values. |
 | `ConvexDecomp/` | Stage 4 | Cuts cleaned OSM footprints into the convex zones an EnergyPlus model is built from: normalization, edge alignment, perimeter and core, and the bounded convex-decomposition search. See `ConvexDecomp/README.md`. |
 | `review_apps/serve_building_selector.py` | Stage 4 | Serves the transformed-building review and records rejected `sample_id` values. |
